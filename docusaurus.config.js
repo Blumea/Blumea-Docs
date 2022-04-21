@@ -4,7 +4,7 @@
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
-/** @type {import('@docusaurus/types').Config} */
+/* @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Blumea Doc",
   tagline: "Building projects at scale, for the developers.",
@@ -20,7 +20,11 @@ const config = {
     [
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
+
       ({
+        theme: {
+          customCss: [require.resolve("./src/css/custom.css")],
+        },
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
@@ -42,6 +46,7 @@ const config = {
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+
     ({
       navbar: {
         title: "Blumea Docs",
