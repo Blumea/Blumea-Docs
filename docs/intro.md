@@ -17,8 +17,6 @@ A Bloom filter is a space-efficient probabilistic data structure for determining
 
 Get started by **Installation**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
 ### Installation
 
 ```bash
@@ -37,14 +35,14 @@ npm install blumea --save
 - Require the **Blumea** module into your javascript/typescript application.
 
 ```js
-const blumea = require('blumea')
+const blumea = require("blumea");
 ```
 
 - **blumea** can now be used to access various bloom filter options.
 
 ```js
-const basicFilter = blumea.bloomFilterBasic
-let filter = new basicFilter(itemCount, falsePostiveProbability)
+const basicFilter = blumea.bloomFilterBasic;
+let filter = new basicFilter(itemCount, falsePostiveProbability);
 ```
 
 ### Methods
