@@ -2,11 +2,13 @@
 sidebar_position: 1
 slug: /
 ---
+
 :::caution
 
-Contains **bug fixes** from previous `versions`. 
+Contains **bug fixes** from previous `versions`.
 
 :::
+
 # Blumea Intro
 
 Let's discover **Blumea in less than 5 minutes**.
