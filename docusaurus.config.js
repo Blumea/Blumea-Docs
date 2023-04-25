@@ -58,12 +58,12 @@ const config = {
           // {
           //   type: "docsVersionDropdown",
           // },
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Docs",
-          },
+          // {
+          //   type: "doc",
+          //   docId: "intro",
+          //   position: "left",
+          //   label: "Docs",
+          // },
           // { to: "/blog", label: "Npm", position: "left" },
           {
             href: "https://github.com/Blumea",
