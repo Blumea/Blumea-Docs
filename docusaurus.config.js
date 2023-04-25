@@ -55,15 +55,15 @@ const config = {
           src: "img/logo2.png",
         },
         items: [
-          {
-            type: "docsVersionDropdown",
-          },
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Docs",
-          },
+          // {
+          //   type: "docsVersionDropdown",
+          // },
+          // {
+          //   type: "doc",
+          //   docId: "intro",
+          //   position: "left",
+          //   label: "Docs",
+          // },
           // { to: "/blog", label: "Npm", position: "left" },
           {
             href: "https://github.com/Blumea",
@@ -121,6 +121,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      disableVersioning: true,
     }),
 };
 
