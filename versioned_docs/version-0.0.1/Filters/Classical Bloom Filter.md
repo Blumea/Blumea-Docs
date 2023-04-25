@@ -1,24 +1,31 @@
-A Bloom filter is a space-efficient probabilistic data structure that is used to test whether an element is a member of a set.
+Classical Bloom Filters are an extension of Bloom Filters that use a bit array and hash functions to represent the membership of an element in a set. They are probabilistic data structures used for membership testing with applications in web caching, spell checkers, virus scanners, Content Delivery Networks (CDN) and network routers.
 
-### 🛳 Imports
+### 🛳 How to import?
+
+To import the BloomFilter class from the Blumea package into your project, use the following:
 
 ```js
-//import the the class from blumea package
 const { BloomFilter } = require("blumea");
 
-//create a filter instance with itemCount && falsePositive rate.
-let filter = new BloomFilter(799, 0.02);
+/**
+ * Create a Bloom filter instance for your app.
+ * Provide item count and an acceptable false positive rate.
+ */
+
+let filter = new BloomFilter(9700, 0.01);
 ```
 
-### 💡 Public Access Methods
+By passing the desired item count and false positive rate as arguments to the BloomFilter constructor, you can create a Bloom filter instance with the appropriate settings for your use case.
+
+### 💡 Methods:
 
 - ** insert(element) ** : To add the element to the bloom filter instance.
 - ** find(element) ** : To check for element membership with the false positive rate of the filter.
 - ** updateFalsePositiveRate(newFalsePostive) ** : To update the filter instance with a new false positive rate.
 - ** updateItemCount(newItemCount) ** : To update the filter instance with a new item count.
 - ** Utility Methods ** :
-   - getHashFunctionCount() or filter.hash_count
-   - getBitArraySize() or filter.size
+  - getHashFunctionCount() or filter.hash_count
+  - getBitArraySize() or filter.size
 
 :::note
 
@@ -28,9 +35,9 @@ updateX methods() are experimental. Classical Bloom filters have static false po
 
 ### ❗️Usage Warning
 
-- The false positive rate must not exceed 1.0. An exception will be thrown if this value is exceeded.
+- Please note that the false positive rate in a Bloom filter should not exceed 0.999. If this value is exceeded, an exception will be thrown.
 
-- Valid Range: 0.01 to 0.99
+- The valid range for false positive rates is between 0.001 and 0.999.
 
 - Sample Code Snipet:
 

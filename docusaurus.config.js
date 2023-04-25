@@ -55,9 +55,9 @@ const config = {
           src: "img/logo2.png",
         },
         items: [
-          {
-            type: "docsVersionDropdown",
-          },
+          // {
+          //   type: "docsVersionDropdown",
+          // },
           {
             type: "doc",
             docId: "intro",
@@ -121,6 +121,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      disableVersioning: true,
     }),
 };
 
