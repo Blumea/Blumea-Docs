@@ -21,53 +21,44 @@ let filter = new CountingBloomFilter(5999, 0.03);
 
 :::note
 
-When an element is added to the Counting Bloom Filter with a single bit count, the filter increments the count of that element every time it is added. This count is maintained in the count_bit array for each element in the filter.
+When an element is added to the Counting Bloom Filter with a single bit count, the filter increments the count of that element every time it is added. This count is maintained in the `count_bit ` array for each element in the filter.
 :::
 
 - ** find(element) ** : To check for element membership with the false positive rate of the filter.
-- ** updateFalsePositiveRate(newFalsePostive) ** : To update the filter instance with a new false positive rate.
-- ** updateItemCount(newItemCount) ** : To update the filter instance with a new item count.
+- ** getCount(element) ** : To check for element membership and extract it's count. It returns the count if the element is found, `0` otherwise.
 - ** Utility Methods ** :
+
   - getHashFunctionCount() or filter.hash_count
   - getBitArraySize() or filter.size
 
-### ❗️Usage Warning
-
-- Please note that the false positive rate in a Bloom filter should not exceed 0.999. If this value is exceeded, an exception will be thrown.
-
-- The valid range for false positive rates is between 0.001 and 0.999.
-
-- Sample Node app with Counting Bloom Filter:
+- Sample Code snippet for Counting Bloom Filter:
 
 ```js
-  const express = require('express')
-  const { CountingBloomFilter } = require('blumea'),
-  const app = express();
+const { CountingBloomFilter } = require("blumea");
+const express = require("express");
+const app = express();
 
-  // Initialize counting bloom filter
-  const filter = new CountingBloomFilter(5999, 0.03);
+let filter = new CountingBloomFilter(1000, 0.01);
 
-  // Route to check for username availability
-  app.post('/check-username', (req,res)=>{
-      try {
-          const username = req.body.username;
-          if(!username) {
-            // Handle invalid input case
-          } else {
-            /**
-             * Check if username is available using filter.
-             * Saves network bandwidth on db queries.
-             * */
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    // Save NT bandwidth on db queries to validate username.
+    if (!filter.find(username)) {
+      // handle invalid username case
+    }
 
-            if(filter.find(username))
-              res.send(`${username} already in use.`)
-            else
-              res.send(`${username} is available.`)
-          }
-      } catch (e) {
-        // Handle errors
-      }
-  })
+    //Some Logic to verify credentials.
+    await processLogin({ username, password });
 
-  app.listen(3000, ()=> {console.log (`Server live on PORT: ${3000}`);})
+    // save count with bloom filter.
+    filter(username, filter.getCount(username) + 1);
+
+    // Or simply use the insert method.
+    filter.insert(username);
+  } catch (error) {
+    // handle error
+  }
+});
+// ...code
 ```
