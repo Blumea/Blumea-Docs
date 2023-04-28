@@ -1,4 +1,4 @@
-### 🛳 Import
+### 🛳 Imports
 
 ```js
 //import the the class from blumea package
